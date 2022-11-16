@@ -7,7 +7,7 @@
         <button @click="toggleDetails">{{ detailsAreVisible ? "Hide" : "show" }}</button>
         <ul v-if="detailsAreVisible">
             <li>
-                <strong>Phone:</strong>
+                <strong>Phone 123:</strong>
                 {{ phoneNumber }}
             </li>
             <li>
