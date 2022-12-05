@@ -1,71 +1,34 @@
 <template>
-    <!--  <nav>-->
-    <!--    <router-link to="/">Home</router-link> |-->
-    <!--    <router-link to="/about">About</router-link>-->
-    <!--  </nav>-->
-
-    <header>
-        <h1>My Friends</h1>
-    </header>
-    <ul>
-        <friend-contact
-            v-for="friend in friends"
-            :key="friend.id"
-            :name="friend.name"
-            :phone-number="friend.phone"
-            :email-address="friend.email"
-            :is-favorite="friend.favorite"
-
-        ></friend-contact>
-<!--        <friend-contact name="Manuel Lorenz" phone-number="2012135" email-address="jlkajsdf@gmail.com" :is-favorite='true'></friend-contact>-->
-<!--        <friend-contact name="peter wang" phone-number="12012135" email-address="aaaakajsdf@gmail.com"></friend-contact>-->
-    </ul>
+    <the-navigation />
+    <main>
+        <router-view />
+    </main>
 </template>
 <script>
-import FriendContact from "@/views/FriendContact";
-
+import TheNavigation from "@/components/section8/TheNavigation";
 export default {
     name: "App",
-    components: {FriendContact},
-    data () {
+    components: { TheNavigation },
+    data() {
         return {
-            friends: [
-                {
-                    name: "Manuel",
-                    phone: "505213613131",
-                    email: "dsfasdf@gmail.com",
-                    favorite: true
-                },
-                {
-                    name: "1Manuel",
-                    phone: "1505213613131",
-                    email: "1dsfasdf@gmail.com"
-                }
-            ]
         }
+    },
+    methods: {
+
     }
 
 }
 </script>
 <style>
-#app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+* {
+  box-sizing: border-box;
 }
 
-nav {
-    padding: 30px;
+html {
+  font-family: sans-serif;
 }
 
-nav a {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-    color: #42b983;
+body {
+  margin: 0;
 }
 </style>

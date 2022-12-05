@@ -4,10 +4,11 @@
             {{ name }}
             {{ displayFavorite }}
         </h2>
+        <button @click="toggleFavorite">Toggle Favorite</button>
         <button @click="toggleDetails">{{ detailsAreVisible ? "Hide" : "show" }}</button>
         <ul v-if="detailsAreVisible">
             <li>
-                <strong>Phone 123:</strong>
+                <strong>Phone:</strong>
                 {{ phoneNumber }}
             </li>
             <li>
@@ -24,6 +25,10 @@ export default {
     name: "FriendContact",
     // props: ["name", "phoneNumber", "emailAddress", "isFavorite"],
     props: {
+        id: {
+            type: Number,
+            required: true
+        },
         name: {
             type: String,
             required: true,
@@ -42,6 +47,18 @@ export default {
             }
         },
     },
+    // emits: ["toggle-favorite"],
+    emits: {
+        // this for validating of the emit event
+        "toggle-favorite": function(id) {
+            if (id) {
+                return true;
+            } else {
+                alert("missing id in toggle favorite emits")
+                return false;
+            }
+        }
+    },
     data() {
         return {
             detailsAreVisible: false,
@@ -50,7 +67,12 @@ export default {
     methods: {
         toggleDetails() {
             this.detailsAreVisible = !this.detailsAreVisible
+        },
+        toggleFavorite() {
+            // always use cava case
+            this.$emit("toggle-favorite", this.id)
         }
+
     },
     computed: {
         displayFavorite() {
